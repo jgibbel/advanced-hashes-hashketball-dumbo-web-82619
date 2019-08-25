@@ -255,4 +255,43 @@ def winning_team
     home_points > away_points ? home_team : away_team
 end
   
+def player_with_longest_name()
+  big_hash = game_hash()
+  player = 0 
+  length = 0 
+  big_hash.each do |loc, data|
+    data.each do |k1, v1|
+      if k1 == :players
+        v1.each do |k2, v2|
+          name = k2[:player_name]
+          if name.size > length
+            player = k2[:player_name]
+            length = name.size
+          end
+        end
+      end
+    end
+  end
+  player
+end
 
+def long_name_steals_a_ton?()
+  big_hash = game_hash()
+  player = 0 
+  steal = 0
+  player_long = player_with_longest_name()
+  big_hash.each do |loc, data|
+    data.each do |k1, v1|
+      if k1 == :players
+        v1.each do |k2, v2|
+          name = k2[:player_name]
+          if k[:steals] > steal
+            player = k2[:player_name]
+            steal = k2[:steals]
+          end
+        end
+      end
+    end
+  end
+  player_long == player ? true : false
+end
