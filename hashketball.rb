@@ -222,7 +222,7 @@ def most_points_scored()
     data.each do |k1, v1|
       if k1 == :players
         v1.each do |k2, v2|
-          if k2[:points] > points_hold
+          if k2[:points] > points
             player = k2[:player_name]
             points = k2[:points]
           end
@@ -243,7 +243,7 @@ def winning_team
         info.each do |key, value|            
             if key == :players
                 value.each do |k, v|
-                    if location == :home
+                    if loc == :home
                         home_points += k[:points]
                     else 
                         away_points += k[:points]
@@ -285,7 +285,7 @@ def long_name_steals_a_ton?()
       if k1 == :players
         v1.each do |k2, v2|
           name = k2[:player_name]
-          if k[:steals] > steal
+          if k2[:steals] > steal
             player = k2[:player_name]
             steal = k2[:steals]
           end
